@@ -11,7 +11,7 @@
   --amber:   #d29922;
   --mono:    'IBM Plex Mono', monospace;
   --sans:    'IBM Plex Sans', sans-serif;
-  --serif:   'Source Serif 4', Georgia, serif;  /* h1/h2 referenced this but it
+  /*--serif:   'Source Serif 4', Georgia, serif;  /* h1/h2 referenced this but it
                                                    was never declared, so every
                                                    heading silently fell back to
                                                    --sans and the Source Serif 4
