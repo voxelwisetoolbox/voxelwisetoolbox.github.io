@@ -11,6 +11,11 @@
   --amber:   #d29922;
   --mono:    'IBM Plex Mono', monospace;
   --sans:    'IBM Plex Sans', sans-serif;
+  --serif:   'Source Serif 4', Georgia, serif;  /* h1/h2 referenced this but it
+                                                   was never declared, so every
+                                                   heading silently fell back to
+                                                   --sans and the Source Serif 4
+                                                   webfont was loaded unused. */
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -64,6 +69,7 @@ nav {
 }
 .hero-tag::before { content:''; width: 3px; height: 16px; background: var(--accent); display: inline-block; border-radius: 2px; }
 h1 { font-size: clamp(1.5em,5vw,2.8rem); font-weight: 300; line-height: 1.15; letter-spacing: -0.02em; margin-top: 0rem; margin-bottom: 1.1rem; font-family: var(--serif); color: var(--accent2); }
+/*h1 em { font-style: italic; color: var(--accent); font-weight: 400; font-size: clamp(.9em,2vw,2.8rem);} */
 h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
 .hero-sub { font-size: 0.95rem; color: #2a523b; max-width: 420px; margin-bottom: 2rem; line-height: 1.8; font-weight: 400; }
 .hero-buttons { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.5rem; width: 100%; }
@@ -269,10 +275,10 @@ h2 { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom
 .feature-text strong { color: #0f1f3d; font-weight: 700; }
 
 /* Atlas */
-.atlas-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+.atlas-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
 .atlas-item { background: #ffffff; padding: 0.45rem 0.8rem; display: flex; justify-content: space-between; align-items: center; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); transition: background 0.15s; }
 .atlas-item:hover { background: #fff5f0; }
-.atlas-item:nth-child(4n) { border-right: none; }
+.atlas-item:nth-child(2n) { border-right: none; }
 .atlas-name { font-size: 12px; color: var(--text); }
 .atlas-rois { font-family: var(--mono); font-size: 10px; color: var(--accent2); background: rgba(26,43,94,0.08); padding: 1px 5px; border-radius: 3px; }
 
@@ -345,6 +351,6 @@ footer a:hover { text-decoration: underline; }
 @media (max-width: 760px) {
   .hero-wrap { grid-template-columns: 1fr; }
   .hero-right { position: static; }
-  .atlas-grid { grid-template-columns: repeat(2,1fr); }
+  .atlas-grid { grid-template-columns: 1fr; }
   .feature-cols { grid-template-columns: 1fr; }
 }
