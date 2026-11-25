@@ -144,6 +144,7 @@ h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
 
 .figure-banner img {
   width: 700px;
+  max-width: 100%;
   max-height: 280px;
   object-fit: cover;
   border-radius: 10px;
@@ -348,9 +349,57 @@ footer a:hover { text-decoration: underline; }
 .hero-left > *:nth-child(5) { animation-delay: 0.37s; }
 .hero-right { animation: fadeUp 0.7s ease 0.2s both; }
 
+/* ── Wordmark (was inline styles on the hero div) ── */
+.wordmark { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.wordmark-logo { height: 60px; width: auto; flex-shrink: 0; }
+.wordmark-text {
+  font-family: var(--sans); font-size: 3rem; font-weight: 700;
+  color: var(--accent2); line-height: 1.05;
+}
+.wordmark-text em { color: var(--accent); font-style: normal; }
+
 @media (max-width: 760px) {
-  .hero-wrap { grid-template-columns: 1fr; }
-  .hero-right { position: static; }
+  /* nav — keep one line instead of clipping "Publications" */
+  nav { padding: 0 1rem; gap: 0.6rem; }
+  .nav-brand { white-space: nowrap; }
+  .nav-links { gap: 0.7rem; }
+  .nav-links a { font-size: 11px; white-space: nowrap; }
+
+  /* hero */
+  .hero-wrap { grid-template-columns: 1fr; padding: 30px 1rem 2rem; gap: 2rem; }
+  .hero-left { padding-left: 1rem; }
+  .hero-right { position: static; margin-top: 0; }
+  .hero-sub { max-width: none; }
+  .hero-buttons .btn { flex: 1 1 auto; }
+
+  /* wordmark */
+  .wordmark { gap: 0.6rem; margin-bottom: 1rem; }
+  .wordmark-logo { height: 40px; }
+  .wordmark-text { font-size: 1.75rem; }
+
+  /* code panel — scroll the long lines instead of cutting them off */
+  .code-body { overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+
+  /* content grids */
   .atlas-grid { grid-template-columns: 1fr; }
   .feature-cols { grid-template-columns: 1fr; }
+  .install-row { grid-template-columns: 18px 1fr; gap: 0.4rem 0.8rem; }
+  .install-desc { grid-column: 2; text-align: left; }
+
+  /* gutters */
+  .section { padding: 2.5rem 1rem; }
+  .figure-banner { padding: 1rem; }
+  footer { padding: 1.2rem 1rem; }
+}
+/* Very narrow phones: the hero wordmark names the site, so the nav brand
+   can step aside and leave the full width for the section links. */
+@media (max-width: 460px) {
+  .nav-brand { display: none; }
+  .nav-links { gap: 0.9rem; width: 100%; justify-content: space-between; }
+  .nav-links a { font-size: 11px; }
+}
+
+/* Long clone URLs and paths must wrap on a phone rather than run off the card. */
+@media (max-width: 760px) {
+  .install-code { overflow-wrap: anywhere; word-break: break-word; }
 }
